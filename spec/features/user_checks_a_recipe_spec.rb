@@ -36,7 +36,9 @@ feature "User checks a recipe's deliciousness", %(
 
     fill_in 'Recipe Name', with: 'miso ramen'
 
-    expect(page).to have_content('Error!')
+    click_button 'Submit'
+
+    expect(page).to have_content('is not a delicious recipe!')
 
   end
 
@@ -48,9 +50,9 @@ feature "User checks a recipe's deliciousness", %(
 
     click_button 'Submit'
 
-    expect(page).to have_content('Error!')
+    expect(page).to have_content('is not a delicious recipe!')
 
-    click_link 'Try Again!'
+    click_link 'Try again!'
 
     expect(page).to have_content('The High-Tech Recipe Evaluation Machine')
 
@@ -72,9 +74,9 @@ feature "User checks a recipe's deliciousness", %(
 
     click_button 'Submit'
 
-    expect(page).to have_content('Error!')
+    expect(page).to have_content("You can't submit an empty recipe name!")
 
-    click_link 'Try Again!'
+    click_link 'Try again!'
 
     expect(page).to have_content('The High-Tech Recipe Evaluation Machine')
 
